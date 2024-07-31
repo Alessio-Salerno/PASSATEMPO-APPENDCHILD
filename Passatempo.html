@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Passatempo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CDN GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        body{
+            background-color: blanchedalmond;
+        }
+        
+        
+        
+        *{
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+        }
+        
+        .principale{
+            margin-bottom: 2pc;
+        }
+        
+        .btn-custom {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #000000; /* Colore di sfondo */
+            border: none;
+            border-radius: 5px; /* Bordo arrotondato */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombra */
+            transition: background-color 0.3s, transform 0.3s; /* Transizione */
+        }
+        
+        .btn-custom:hover {
+            background-color: blanchedalmond; /* Colore di sfondo al passaggio del mouse */
+            transform: translateY(-2px); /* Leggero sollevamento */
+            color: #000000;
+        }
+        
+        .btn-custom:active {
+            background-color: #000000; /* Colore di sfondo quando cliccato */
+            transform: translateY(0); /* Ripristina posizione */
+        }
+        
+        .btn-custom:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(12, 12, 12, 0.5); /* Ombra di messa a fuoco */
+            
+        }
+        
+        
+        
+        
+        /* ANIMAZIONI */
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        .fade-out {
+            animation: fadeOut 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        
+        
+        /* INPUT */
+        .input-group.mb-3{
+            width: 30pc;
+        }        
+        
+        
+        
+        
+        section.inputUno {
+            display: flex;
+            justify-content: center;
+        }
+        
+        
+        
+        input::placeholder {
+            color: white!important;
+        }
+        
+        
+        input:hover::placeholder {
+            color: black !important;
+        }
+        
+        
+        
+        /* CARD CUSTOM CSS */
+        .card-custom{
+            box-shadow: 2px 2px 5px blanchedalmond, -2px -2px 5px rgb(0, 0, 0);
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 20px;
+            background-color: blanchedalmond;
+        }
+        
+        
+        /* ANIMAZIONI */
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        .fade-out {
+            animation: fadeOut 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        
+        /* WRAPPER DUE */
+        div#wrapperDue{
+            display: flex; 
+            justify-content: center;
+        }
+        
+        
+        
+        /* ICONA */
+        .icon{
+            cursor: pointer;
+        }
+        
+        
+        
+        
+    </style>
+    
+    
+</head>
+<body>
+    
+    
+    
+    
+    <!-- COLONNA 1 -->
+    
+    <section class="container-fluid my-5">
+        <div class="row">
+            <article class="col-12 col-md-4">
+                <h3 class="text-center">Mostra Giocatore</h3>
+                <br>
+                <button id="mostraGiocatoreBtn" class="btn btn-custom text-center d-block m-auto">Mostrami Giocatore</button>
+            </article> 
+            
+            
+            
+            
+            
+            <!-- COLONNA 2 -->
+            
+            
+            <article class="col-md-4">
+                <h3 class="text-center">Mostrami il testo</h3>
+                <br>
+                <button id="mostraTestoBtn" class="btn btn-custom text-center d-block m-auto">Mostra testo</button>
+            </article>
+            
+            
+            
+            
+            
+            <!-- COLONNA 3 -->
+            
+            
+            <article class="col-md-4">
+                <h3 class="text-center">Cancella il Giocatore</h3>
+                <br>
+                <button id="removeBtn" class="btn btn-custom text-center d-block m-auto">Cancella</button>
+            </article>
+            
+            
+        </section>
+        
+        
+        <br>
+        
+        <!-- SECTION INPUT -->
+        
+        <section class="inputUno">
+            <div class="row">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control text-center"  id="principale"  placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        <!-- WRAPPER 1 -->
+        
+        <section class="secondary container-fluid ">
+            <div class="row">
+                <div id="wrapper" class="col-12-col-md-8">
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="terza container-fluid">
+            <div class="row">
+                <div id="wrapperDue"  class="col-12-col-md-8">
+                </div>
+            </div>
+            
+        </section>
+        
+        
+        
+
+
+    <!-- WRAPPER 2 -->
+
+    <section class="quarta container-fluid">
+        <div class="row">
+            <div id="wrapperTre"  class="col-12-col-md-8">
+          </div>
+        </div>
+    </section>
+
+        
+        
+        <script>
+            
+            // BOTTONI
+            let mostraGiocatoreBtn = document.querySelector('#mostraGiocatoreBtn');
+            let mostraTestoBtn = document.querySelector('#mostraTestoBtn');
+            let removeBtn = document.querySelector('#removeBtn');
+
+            
+            
+            
+            // WRAPPER
+            let wrapper = document.querySelector('#wrapper');
+            let wrapperDue = document.querySelector('#wrapperDue');
+          
+            
+            
+            
+           
+            
+            
+            // INPUT
+            let principale = document.querySelector('#principale');
+            
+            
+            
+            // classe
+            principale.classList.toggle('btn-custom');
+            
+            
+            // VARIABILE DI APPOGGIO
+            let check = false;
+            
+            
+            
+            // OGGETTO
+            
+            let giocatori = {
+                lista_giocatori : [
+                {name_giocatore : 'Lamine', ruolo_giocatore: 'Centrocampista'},
+                {name_giocatore : 'Cristiano', ruolo_giocatore: 'Centrocampista'},
+                {name_giocatore : 'Benzema', ruolo_giocatore: 'Attacante'},
+                ],
+                
+                
+                
+                
+                //FUNZIONI
+                
+                // 1 FUNZIONE MOSTRA GIOCATORI
+                
+                mostraGiocatore: function() {
+                     wrapper.innerHTML='';
+                    //  In questo caso svuotare il wrapper per richiamare la funzione
+
+                    this.lista_giocatori.forEach((giocatore) => {
+                        let div = document.createElement('div');
+                        div.classList.add('card-custom');
+                        div.innerHTML = `
+                    <p>${giocatore.name_giocatore}</p>
+                    <p>${giocatore.ruolo_giocatore}</p>
+                    <i class="fa-solid fa-trash icon"></i>
+                       `;
+                        
+                      
+                        
+                        wrapper.appendChild(div);
+
+
+                    
+                    });
+
+
+
+                     
+                            // ICONE -> Le icone vanno loggate dopo l'append child, perchè prima non esistono
+                    let icons = document.querySelectorAll('.icon');
+                      icons.forEach( (icona, i) => {
+                         icona.addEventListener( 'click', () => {
+                            alert('Vuoi cancellare questo Giocatore?')
+                            this.lista_giocatori.splice(i, 1);
+                            giocatori.mostraGiocatore();
+                         });
+                      });
+            
+                }, 
+                
+
+                // MOSTRA TESTO
+
+                mostraTesto: function() {
+                    let divDue = document.createElement('div');
+                    divDue.innerHTML = `
+                    <br><br>
+                    
+                    <div class="card btn-custom" style="width: 18rem;">
+                        <img src="" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Card title</h5>
+                            <p class="card-text"></p>
+                        </div>
+                        
+
+                        <hr>
+
+
+
+                        <div class="row">
+                        <div class="col-12-col-md-4" style="display:flex; justify-content:space-around;">
+                        <li class="list-group-item btn-custom" style="padding:6px; border-radius:6px; ">Prima foto</li><button    type="button" class="btn btn-primary btn-sm btn-custom btn1" style=" padding:4px; font-size: 15px;">Clicca qui</button>
+                        </div>
+                        </div>
+                        
+
+                        <hr>
+
+                        <div class="row">
+                        <div class="col-12-col-md-4" style="display:flex; justify-content:space-around;">
+                        <li class="list-group-item btn-custom" style="padding:6px; border-radius:6px; ">Seconda foto</li><button   type="button" class="btn btn-primary btn-sm btn-custom btn1" style=" padding:4px; font-size: 15px;">Clicca qui</button>
+                        </div>
+                        </div>
+                            
+
+
+                    <hr>
+                            
+
+
+                    
+                        
+                    
+                            
+                        <div class="card-body" style="display:flex; justify-content:space-around;">
+                        <a href="#" class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="font-weight:bolder; text-align:center;">Clicca qua</a>
+                        <a href="#" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"    style="font-weight:bolder; text-align:center;">Info link</a>
+                        </div>
+                    </div>
+                `;
+                    
+                    
+                    wrapperDue.appendChild(divDue);
+                    
+                    
+                    
+                    let btn1 = document.querySelectorAll('.btn1');
+                    let wrapperTre = document.querySelector('#wrapperTre');
+                   
+                    btn1.forEach( (button) => {
+                       button.addEventListener('click', () => {
+                        let divTre = document.createElement('div');
+                       divTre.innerHTML= `
+                      <img src="https://picsum.photos/200/300">
+                      `;
+
+                      wrapperTre.appendChild(divTre);
+
+                       }); 
+                    });
+                    
+                },
+                
+                
+                // RIMUOVI GIOCATORI
+                removePlayer: function(removedPlayer){
+                let names = this.lista_giocatori.map( (giocatore) => giocatore.name_giocatore);
+                let index = names.indexOf(removedPlayer);
+                if(index >= 0){
+                    this.lista_giocatori.splice(index, 1);
+                    giocatori.mostraGiocatore();
+                    if(check == false){
+                        check = true;
+                        mostraGiocatore.innerHTML = 'Nascondi Giocatore'
+                    };
+                }
+            }
+
+
+                
+            };
+            
+            // CLICK RIMUOVI GIOCATORE
+            removeBtn.addEventListener('click', ()=>{
+                // giocatori.removePlayer('Lamine');
+                
+            })
+            
+            
+            
+            
+            
+            // CLICK EVENTI          
+            // 1 CLICK MOSTRA GIOCATORE
+            
+            mostraGiocatoreBtn.addEventListener( 'click', () => {
+                // giocatori.mostraGiocatore();
+                if(check == false){
+                    wrapper.classList.remove('fade-out');
+                    wrapper.classList.add('fade-in');
+                    giocatori.mostraGiocatore();
+                    check = true;
+                    mostraGiocatoreBtn.innerHTML = 'Nascondi Giocatore';
+                }
+                else{
+                    wrapper.classList.remove('fade-in');
+                    wrapper.classList.add('fade-out');
+                    setTimeout( () => {
+                        wrapper.innerHTML= '';
+                    },500);
+                    check = false;
+                    mostraGiocatoreBtn.innerHTML = 'Mostra Giocatore'
+                }
+            });
+            
+            
+            
+            //  2 CLICK MOSTRA TESTO
+            
+            mostraTestoBtn.addEventListener('click', () => {
+                if(check == false){
+                    wrapperDue.classList.remove('fade-out');
+                    wrapperDue.classList.add('fade-in');
+                    giocatori.mostraTesto();
+                    check = true;
+                    mostraTestoBtn.innerHTML = 'Nascondi Testo'
+                }
+                else{
+                    wrapperDue.classList.remove('fade-in');
+                    wrapperDue.classList.add('fade-out');
+                    setTimeout( () => {
+                        wrapperDue.innerHTML = '';
+                    },500);
+                    check = false;
+                    mostraTestoBtn.innerHTML = 'Mostra Testo'
+                }
+                
+            });
+            
+            
+
+        
+
+            
+        </script>
+        
+        
+        
+        
+        <!-- KIT ICONE -->
+        
+        <script src="https://kit.fontawesome.com/f0488c32c1.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
